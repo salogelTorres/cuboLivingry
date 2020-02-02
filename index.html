@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="css.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>Cubo V2</title>
+    <style>
+        :root {
+            --cian: cyan;
+            --rojo: red;
+            --amarillo: yellow;
+            --verde: green;
+            --naranja: orange;
+            --magenta: magenta;
+
+            --gris: #3d3d3d;
+
+            --cianTransparent: rgba(0, 255, 255, .5);
+            --rojoTransparent: rgba(255, 0, 0, .5);
+            --amarilloTransparent: rgba(255, 255, 0, .5);
+            --verdeTransparent: rgba(0, 128, 0, .5);
+            --naranjaTransparent: rgba(255, 165, 0, .5);
+            --magentaTransparent: rgba(255, 0, 255, .5);
+
+
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: var(--gris);
+        }
+
+        .cubeContainter {
+            padding-top: 50px;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 150px;
+            height: 150px;
+            margin: 50px auto;
+            position: relative;
+            perspective: 400px;
+        }
+
+        #cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: all 3s;
+            /* -webkit-transition-timing-function: linear;
+    transition-timing-function: linear; */
+        }
+
+        #cube figure {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.5em;
+            /* text-shadow: 0px 0px 2px black; */
+            transition: all .1s;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border: 2px solid white;
+            cursor: pointer;
+            color: black !important;
+        }
+
+
+        /* #cube figure:hover {
+            background: rgba(0, 0, 0, .5);
+            color: white;
+        } */
+
+        #cube .back {
+            background: var(--cianTransparent);
+            color: var(--cian);
+            transform: rotateX(180deg) translateZ(75px);
+        }
+
+        #cube .left {
+            background: var(--rojoTransparent);
+            color: var(--rojo);
+            transform: rotateY(-90deg) translateZ(75px);
+        }
+
+        #cube .bottom {
+            background: var(--amarilloTransparent);
+            color: var(--amarillo);
+            transform: rotateX(-90deg) translateZ(75px);
+        }
+
+        #cube .front {
+            background: var(--verdeTransparent);
+            color: var(--verde);
+            transform: rotateX(0deg) translateZ(75px);
+        }
+
+        #cube .right {
+            background: var(--naranjaTransparent);
+            color: var(--naranja);
+            transform: rotateY(90deg) translateZ(75px);
+        }
+
+        #cube .top {
+            background: var(--magentaTransparent);
+            color: var(--magenta);
+            transform: rotateX(90deg) translateZ(75px);
+        }
+
+        p.livingry {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 4em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 60s;
+            position: absolute;
+        }
+
+        .tienda {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cubeContainter">
+        <section class="container">
+            <div id="cube">
+                <!-- <p class="livingry">
+                    <span class="cian">L</span>
+                    <span class="verde">i</span>
+                    <span class="amarillo">v</span>
+                    <span class="naranja">i</span>
+                    <span class="rojo">n</span c>
+                    <span class="magenta">g</span>
+                    <span class="cian">r</span>
+                    <span class="verde">y</span>
+                </p> -->
+                <figure class="back">Futuro</figure>
+                <figure class="left">Desarrollo</figure>
+                <figure class="bottom">Progreso</figure>
+                <figure class="front">Arquitectura</figure>
+                <figure class="right">Economía</figure>
+                <figure class="top">Planeta tierra</figure>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="tienda">
+        <button>Ir a la tienda</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <!-- <script src="js.js"></script> -->
+    <script>
+        $(function () {
+            function rotate() {
+                angY = angZ = angX = 0;
+                setInterval(function () {
+                    var rand = (Math.floor(Math.random() * 1000)) - 500;
+                    angX += rand;
+                    var rand1 = (Math.floor(Math.random() * 1000)) - 500;
+                    angY += rand1;
+                    var rand2 = (Math.floor(Math.random() * 1000)) - 500;
+                    angZ += rand2;
+
+                    $('#cube').attr('style', 'transform: rotateX(' + angX + 'deg) rotateY(' + angY + 'deg) rotateZ(' + angZ + 'deg);');
+
+
+                }, 3000);
+            };
+            rotate();
+
+            function rotateLivingry() {
+                var ang = 3600;
+                $('p.livingry').attr('style', 'transform: rotateY(' + ang + 'deg)');
+
+            }
+            rotateLivingry();
+        }); 0
+    </script>
+</body>
+
+</html>
