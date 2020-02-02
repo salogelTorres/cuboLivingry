@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <link rel="stylesheet" href="css.css"> -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
     <title>Cubo V2</title>
     <style>
         :root {
@@ -32,7 +34,7 @@
         * {
             margin: 0px;
             padding: 0px;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             box-sizing: border-box;
 
         }
@@ -145,10 +147,112 @@
             justify-content: center;
             align-items: center;
         }
+
+
+
+
+        /******************** Main menu */
+        .main-menu {
+            position: fixed;
+            margin-top: 20px;
+        }
+
+        .main-menu #btn-menu {
+            display: none;
+        }
+
+        .menu {
+            background: var(--color-primary);
+            color: var(--color-light);
+            z-index: 99999;
+        }
+
+        .main-menu label {
+            display: none;
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            /* border-right: 1px solid #fafafa; */
+            background: var(--color-primary)
+        }
+
+        .main-menu label:hover {
+            cursor: pointer;
+            background: var(--color-light);
+        }
+
+        .menu ul {
+            margin: 0px;
+            list-style: none;
+            padding: 0px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .menu li {
+            flex-grow: 1;
+            background: var(--color-primary);
+        }
+
+        .menu li a:hover {
+            background: var(--color-light);
+            color: var(--color-dark);
+        }
+
+        .menu li a {
+            display: block;
+            height: 100%;
+            padding: 15px 20px;
+            color: var(--color-light);
+            text-decoration: none;
+            text-align: center;
+            background: rgba(0, 0, 0, .0)
+        }
+
+        @media (max-width: 1500px) {
+            .main-menu label {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                width: 50%;
+                margin-left: -300%;
+                transition: all .5s
+            }
+
+            .menu ul {
+                flex-direction: column;
+                box-shadow: var(--box-shadow);
+            }
+
+            #btn-menu:checked~.menu {
+                margin-left: 0px;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="main-menu">
+        <input type="checkbox" id="btn-menu">
+        <label for="btn-menu">Menu</label>
+
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#tienda">Tienda</a></li>
+                <li><a href="#">Livingry Center</a></li>
+                <li><a href="#">Quienes somos</a></li>
+                <li><a href="#">Contacto</a></li>
+
+            </ul>
+        </nav>
+
+
+
+    </div>
     <div class="cubeContainter">
         <section class="container">
             <div id="cube">
@@ -173,7 +277,7 @@
 
     </div>
 
-    <div class="tienda">
+    <div class="tienda" id="tienda">
         <button>Ir a la tienda</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
