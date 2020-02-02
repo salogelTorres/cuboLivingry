@@ -36,8 +36,14 @@
             padding: 0px;
             font-family: 'Montserrat', sans-serif;
             box-sizing: border-box;
+            user-select: none;
 
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
 
         body {
             margin: 0px;
@@ -285,6 +291,13 @@
     <!-- <script src="js.js"></script> -->
     <script>
         $(function () {
+
+            function scrollTo() {
+
+            }
+
+
+
             function rotate() {
                 angY = angZ = angX = 0;
                 setInterval(function () {
@@ -294,21 +307,11 @@
                     angY += rand1;
                     var rand2 = (Math.floor(Math.random() * 1000)) - 500;
                     angZ += rand2;
-
                     $('#cube').attr('style', 'transform: rotateX(' + angX + 'deg) rotateY(' + angY + 'deg) rotateZ(' + angZ + 'deg);');
-
-
                 }, 3000);
             };
             rotate();
-
-            function rotateLivingry() {
-                var ang = 3600;
-                $('p.livingry').attr('style', 'transform: rotateY(' + ang + 'deg)');
-
-            }
-            rotateLivingry();
-        }); 0
+        });
     </script>
 </body>
 
