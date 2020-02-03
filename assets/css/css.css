@@ -24,6 +24,7 @@
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     user-select: none;
+    color: white;
 
 }
 
@@ -43,7 +44,7 @@ img{
 }
 
 .cubeContainter {
-    padding-top: 50px;
+    padding-top: 100px;
     width: 100%;
     min-height: 100vh;
 }
@@ -80,7 +81,7 @@ transition-timing-function: linear; */
     margin: 0;
     border: 2px solid white;
     cursor: pointer;
-    color: black !important;
+    color: white !important;
 }
 
 
@@ -146,23 +147,7 @@ p.livingry {
     justify-content: center;
     align-items: center;
 }
-.parallax{
-    position: absolute;
-    width: 100%;
-    min-height: 300vh;
-    
-    z-index: -1;
-}
-#tienda .parallax{
-    background: url(/assets/img/store.jpg);
-    background-size: cover;
-    background-position: center;
-}
-#livingryCenter .parallax{
-    background: url(/assets/img/store.jpg);
-    background-size: cover;
-    background-position: center;
-}
+
 button, .btn{
     background: var(--verde);
     border: none;
@@ -181,10 +166,12 @@ button, .btn{
 .main-menu {
     position: fixed;
     margin-top: 20px;
+    z-index:99;
 }
 
 .main-menu #btn-menu {
     display: none;
+    filter: negative(100%);
 }
 
 .menu {

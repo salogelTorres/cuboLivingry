@@ -14,15 +14,5 @@ $(function () {
     rotate();
 
 
-    function parallax() {
-        window.addEventListener('scroll', scrollParallax);
-    }
-    parallax();
-
-    function scrollParallax() {
-        var parallax = document.querySelector('.parallax');
-        let scrollTop = document.documentElement.scrollTop;
-        parallax.style.transform = 'translateY(' + (scrollTop) * 0.9 + 'px)';
-    }
-
+    
 });
